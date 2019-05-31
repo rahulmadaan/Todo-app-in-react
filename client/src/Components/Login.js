@@ -8,6 +8,31 @@ import Header from "./base-components/Header.js";
 import "../Sytlesheets/login.css";
 
 class Login extends Component {
+  validateUser(e) {
+    console.log(e.target);
+    return <Link to="/dashboard" />;
+  }
+
+  getUsername() {
+    return (
+      <Input
+        type="text"
+        name="username"
+        className="input-field"
+        placeholder="Enter your username"
+      />
+    );
+  }
+  getPassword() {
+    return (
+      <Input
+        type="password"
+        name="password"
+        placeholder="Password"
+        className="input-field"
+      />
+    );
+  }
   header() {
     return (
       <Header class={"mingleThemeHeader"} body={"Welcome To What TO DO"} />
@@ -21,29 +46,18 @@ class Login extends Component {
       <div className="signInBox">
         {this.title()}
         <Form
-          action={"/login"}
+          // action={"/login"}
           method={"POST"}
           className="login-form"
           body={
             <div>
               <Label body="Username : &#x270D;" />
               <br />
-              <Input
-                type="text"
-                name="username"
-                className="input-field"
-                placeholder="Enter your username"
-              />
+              {this.getUsername()}
               <br />
               <Label body={"Password:"} />
               <br />
-              <Input
-                type="password"
-                name="password"
-                placeholder="Password"
-                className="input-field"
-              />
-              <br />
+              {this.getPassword()}
               <br />
               <Input type="submit" value="Sign In" className="submit-btn" />
               <h4>No Account?? Don't worry</h4>
